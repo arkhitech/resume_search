@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
     # GET /articles/search
   def search
     @articles = Article.tire.search params[:q]
-
+    
     render :action => "index"
   end
 

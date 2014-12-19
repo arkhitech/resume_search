@@ -41,3 +41,7 @@ gem 'spring',        group: :development
 
 gem "tire", git: "git://github.com/karmi/tire.git"
 gem "will_paginate", "~> 3.0"
+
+gem 'nokogiri'
+gem 'mysql2'
+gem "byebug"

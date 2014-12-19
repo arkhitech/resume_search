@@ -1,0 +1,17 @@
+<div>
+  <%unless @facets.nil?%>
+  <h2>Facet Counts</h2>
+  
+      <div>
+        <b>Total Number: </b><%=@facets['name']["total"]%>
+        <ul>
+          <%terms=@facets['name']["terms"]%>
+          <% terms.each do |term| %>
+            <li><%="#{term['term']}   (#{term['count']})"%></li>
+          <%end%>
+        </ul>
+
+      </div>
+  <%end%>
+
+</div>
