@@ -7,7 +7,15 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+    # GET /articles/search
+  def search
+    @articles = Article.tire.search params[:q]
+
+    render :action => "index"
+  end
+
   # GET /articles/1
+
   # GET /articles/1.json
   def show
   end
