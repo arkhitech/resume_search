@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @competency.description %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @competency.name %>
+</p>
+
+<p>
+  <strong>Numeric weight:</strong>
+  <%= @competency.numeric_weight %>
+</p>
+
+<p>
+  <strong>Verbal weight:</strong>
+  <%= @competency.verbal_weight %>
+</p>
+
+<%= link_to 'Edit', edit_competency_path(@competency) %> |
+<%= link_to 'Back', competencies_path %>

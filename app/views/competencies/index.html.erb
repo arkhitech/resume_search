@@ -1,0 +1,31 @@
+<h1>Listing competencies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Name</th>
+      <th>Numeric weight</th>
+      <th>Verbal weight</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @competencies.each do |competency| %>
+      <tr>
+        <td><%= competency.description %></td>
+        <td><%= competency.name %></td>
+        <td><%= competency.numeric_weight %></td>
+        <td><%= competency.verbal_weight %></td>
+        <td><%= link_to 'Show', competency %></td>
+        <td><%= link_to 'Edit', edit_competency_path(competency) %></td>
+        <td><%= link_to 'Destroy', competency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Competency', new_competency_path %>

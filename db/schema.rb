@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222074821) do
+ActiveRecord::Schema.define(version: 20141222114642) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.date     "published_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "competencies", force: true do |t|
+    t.text     "description"
+    t.string   "name"
+    t.integer  "skill_level"
+    t.string   "skill_proficiency"
+    t.integer  "resume_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

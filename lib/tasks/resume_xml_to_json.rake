@@ -26,10 +26,51 @@ namespace :elasticsearch do
         Email="No email"
       end
       Country="Country"+count.to_s
+      
 
-      Resume.find_or_create_by!(name: person_name, telephone: telephone, email: Email, country: Country)
+      resume=Resume.find_or_create_by!(name: person_name, telephone: telephone, email: Email, country: Country)
+      
+      unless json_file['StructuredXMLResume']['Competency'].nil?
+        competencies=json_file['StructuredXMLResume']['Competency']
+          unless competencies.nil?
+            competencies.each do |competency|
+              unless competency.nil?
+                competency_description=nil
+                competency_name=nil
+                skill_level=nil
+                skill_proficiency=nil
+                competency_description=competency['description'] unless  competency['description'].nil?
+                 competency_name=competency['name'] unless competency['name'].nil?
+                 
+                 unless competency['CompetencyWeight'].nil?
+                   competency_weights=competency['CompetencyWeight']
+                   
+                   competency_weights.each do |competency_weight|
+                     if competency_weight.kind_of? Array
+                       if competency_weight[0] == "NumericValue"
+                         skill_level=competency_weight[1].to_i
+                       elsif competency_weight[0] == "StringValue"
+                         skill_proficiency=competency_weight[1]
+                       end
+                     elsif competency_weight.kind_of? Hash
+                       if competency_weight['type']=="skillLevel"
+                        skill_level=competency_weight['NumericValue'].to_i
+                      elsif competency_weight['type']=="skillProficiency"
+                        skill_proficiency=competency_weight['StringValue']
+                      end
+                     end
+                   end
+                 end
+                 
+                 resume.competencies.find_or_create_by!(name: competency_name, description: competency_description, 
+                   skill_level: skill_level,skill_proficiency: skill_proficiency )
+              end
+          end
+        end
+      end
+      
     end
-    
+    Resume.import
 
   end
 
@@ -39,7 +80,7 @@ end
 
 
 
-
+#Resume.__elasticsearch__.create_index! force: true
 #bundle exec rake  elasticsearch:resume_xml_to_json
 
   

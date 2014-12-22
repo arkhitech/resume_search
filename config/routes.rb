@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :competencies
+
   resources :things
 
   resources :people

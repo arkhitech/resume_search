@@ -45,6 +45,7 @@ class ResumesController < ApplicationController
   # GET /resume/new
   def new
     @resume = Resume.new
+    @resume.competencies.build
   end
 
   # GET /resume/1/edit
