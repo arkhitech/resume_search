@@ -1,4 +1,4 @@
-Tire.configure do
-  # url    'http://localhost:9200'
-  # logger STDERR
-end
+#Tire.configure do
+#  # url    'http://localhost:9200'
+#  # logger STDERR
+#end

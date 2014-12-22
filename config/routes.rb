@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  resources :things
+
+  resources :people
+
+  get 'search/index'
+
   get 'resumes/index'
   
-  root :to => 'articles#index'
+  root :to => 'search#index'
   resources :articles do
     collection { get :search }
   end

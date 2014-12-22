@@ -1,7 +1,9 @@
 namespace :elasticsearch do  
   task :resume_xml_to_json  => :environment do
     file_names=Dir.glob("xml_files/*")
+    count=0
     file_names.each do |file_name|
+      count+=1
       puts "file name: #{file_name}"
       f = File.open(file_name)
     
@@ -23,8 +25,9 @@ namespace :elasticsearch do
       else
         Email="No email"
       end
+      Country="Country"+count.to_s
 
-      Resume.find_or_create_by!(name: person_name, telephone: telephone, email: Email)
+      Resume.find_or_create_by!(name: person_name, telephone: telephone, email: Email, country: Country)
     end
     
 

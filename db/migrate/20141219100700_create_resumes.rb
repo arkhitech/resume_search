@@ -5,6 +5,7 @@ class CreateResumes < ActiveRecord::Migration
       t.string :telephone
       t.string :email
       t.string :country
+      
 
       t.timestamps
     end
