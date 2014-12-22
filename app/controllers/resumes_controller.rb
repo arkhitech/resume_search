@@ -1,7 +1,9 @@
 class ResumesController < ApplicationController
   def index
      @resumes = Resume.all
-     @facets=nil
+     names=@resumes.map(&:name).join(",")
+     result=Resume.search(query: names)
+     @facets=result.facets
   end
   def create
     

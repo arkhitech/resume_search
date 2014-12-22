@@ -1,3 +1,23 @@
 // Place all the styles related to the resume controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.facet_count{
+  float: left;
+  margin-left: 20px;
+}
+
+.resume_list
+{
+  margin-left: 236px;
+}
+
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+th,td {
+    padding: 15px;
+}
+th {
+    text-align: left;
+}
