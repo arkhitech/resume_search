@@ -26,14 +26,14 @@ namespace :elasticsearch do
         telephone="No Number"
       end
       unless json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['InternetEmailAddress'].nil?
-        Email=json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['InternetEmailAddress']
+        email=json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['InternetEmailAddress']
       else
-        Email="No Email"
+        email="No Email"
       end
-      Country="Country"+count.to_s
+      country="Country"+count.to_s
       
 
-      resume=Resume.find_or_create_by!(name: person_name, telephone: telephone, email: Email, country: Country)
+      resume=Resume.find_or_create_by!(name: person_name, telephone: telephone, email: email, country: country)
       
       unless json_file['StructuredXMLResume']['Competency'].nil?
         competencies=json_file['StructuredXMLResume']['Competency']
