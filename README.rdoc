@@ -1,6 +1,6 @@
 == README
 
-This application uses tire elasticsearch to search and filter
+This application uses elasticsearch to search and filter
 
 To run this You need to install elastic search
 https://www.digitalocean.com/community/tutorials/how-to-install-elasticsearch-on-an-ubuntu-vps

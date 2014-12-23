@@ -16,14 +16,19 @@ namespace :elasticsearch do
         person_name="No Name"
       end
       unless json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['Telephone'].nil?
-        telephone=json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['Telephone']['FormattedNumber']
+        begin
+          telephone=json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['Telephone']['FormattedNumber']
+        rescue
+          telephone=json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['Telephone'][0]['FormattedNumber']
+        end
+        
       else
-        telephone="No number"
+        telephone="No Number"
       end
       unless json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['InternetEmailAddress'].nil?
         Email=json_file['StructuredXMLResume']['ContactInfo']['ContactMethod']['InternetEmailAddress']
       else
-        Email="No email"
+        Email="No Email"
       end
       Country="Country"+count.to_s
       
@@ -70,6 +75,7 @@ namespace :elasticsearch do
       end
       
     end
+    Resume.__elasticsearch__.create_index! force: true
     Resume.import
 
   end

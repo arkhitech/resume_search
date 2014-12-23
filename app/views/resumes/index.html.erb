@@ -12,42 +12,47 @@
       </div>
 
       <%# facets %>
-    <h2>Include</h2>
+      <h2>Include</h2>
       <% @search.response.facets.each do |facet,facet_data| %>
-        <div class='form-group'>
-          <label><%= ActiveSupport::Inflector.humanize(facet) %></label>
-          <select class='form-control facet_select' size='5' name="search[<%= facet %>][]" multiple>
-            <% facet_data.terms.each do |f| %>
-              <% selected = (params[:search].present? && params[:search][facet].present? && params[:search][facet].include?(f[:term].to_s)) ? true : false %>
-              <option data-selected="<%= selected %>" value="<%= f[:term] %>" <%= selected ? "selected" : "" %> >
-                <%= f[:term] %>
-                (<%= f[:count] %>)
-              </option>
-            <% end %>
-          </select>
-        </div>
+        <%if facet_data.terms.any? %>
+      
+          <div class='form-group'>
+            <label><%= ActiveSupport::Inflector.humanize(facet) %></label>
+            <select class='form-control facet_select' size='5' name="search[<%= facet %>][]" multiple>
+              <% facet_data.terms.each do |f| %>
+                <% selected = (params[:search].present? && params[:search][facet].present? && params[:search][facet].include?(f[:term].to_s)) ? true : false %>
+                <option data-selected="<%= selected %>" value="<%= f[:term] %>" <%= selected ? "selected" : "" %> >
+                  <%= f[:term] %>
+                  (<%= f[:count] %>)
+                </option>
+              <% end %>
+            </select>
+          </div>
+        <% end %>
       <% end %>
     
-    <h2>Exclude</h2>
-    <% @search.response.facets.each do |facet,facet_data| %>
-        <div class='form-group'>
-          <label><%= ActiveSupport::Inflector.humanize(facet) %></label>
-          <select class='form-control facet_select' size='5' name="search[not][<%= facet %>][]" multiple>
-            <% facet_data.terms.each do |f| %>
-              <% selected = (params[:search].present? && params[:search][:not].present? && params[:search][:not][facet].present? && params[:search][:not][facet].include?(f[:term].to_s)) ? true : false %>
-              <option data-selected="<%= selected %>" value="<%= f[:term] %>" <%= selected ? "selected" : "" %> >
-                <%= f[:term] %>
-                (<%= f[:count] %>)
-              </option>
-            <% end %>
-          </select>
-        </div>
+      <h2>Exclude</h2>
+      <% @search.response.facets.each do |facet,facet_data| %>
+        <%if facet_data.terms.any?%>
+          <div class='form-group'>
+            <label><%= ActiveSupport::Inflector.humanize(facet) %></label>
+            <select class='form-control facet_select' size='5' name="search[not][<%= facet %>][]" multiple>
+              <% facet_data.terms.each do |f| %>
+                <% selected = (params[:search].present? && params[:search][:not].present? && params[:search][:not][facet].present? && params[:search][:not][facet].include?(f[:term].to_s)) ? true : false %>
+                <option data-selected="<%= selected %>" value="<%= f[:term] %>" <%= selected ? "selected" : "" %> >
+                  <%= f[:term] %>
+                  (<%= f[:count] %>)
+                </option>
+              <% end %>
+            </select>
+          </div>
+        <%end%>
       <% end %>
 
-      <div class='form-group'>
-        <button type="submit" class="btn btn-default" id="search_btn">Search</button>
+    <div class='form-group'>
+      <button type="submit" class="btn btn-default" id="search_btn">Search</button>
         <%= link_to 'Reset Search', search_index_path, {class: 'btn btn-default', role: :button} %>
-      </div>
+    </div>
     <% end %>
   </div>
 
