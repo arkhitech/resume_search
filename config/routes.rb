@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
   resources :competencies
 
-  resources :things
 
-  resources :people
 
   get 'search/index'
 
   get 'resumes/index'
   
   root :to => 'search#index'
-  resources :articles do
-    collection { get :search }
-  end
+
   
   
   resources :resumes  do
