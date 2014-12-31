@@ -1,0 +1,49 @@
+<div>
+  <h1>Employer History</h1>
+  <hr>
+  <table class="history_list">
+    <thead>
+      <tr>
+        <th>Organization Name</th>
+        <th>Designation Title</th>
+        <th>Country</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Months Of Work</th>
+        <th>Summary</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @histories.each do |history| %>
+        <tr>
+          <td><%= history.organization_name %></td>
+          <td><%= history.title %></td>
+          <td><%= history.country_code %></td>
+          <td><%= history.start_date %></td>
+          <td><%= history.end_date %></td>
+          <td><%= history.months_of_work %></td>
+          <td>
+            <div class="div_show_link_<%= history.id %>">
+              <button href="#" class="show_summary" data-attr="<%= history.id %>">Show Summary</button>
+            </div>
+            <div class="div_summary_<%= history.id %>" style="display: none;">
+              <% unless history.note.summary.nil?  %>
+              <p><%= history.note.summary.gsub(/;/, "<br>").html_safe %></p>
+              <% else %>
+                N/A
+              <% end %>
+                <button href="#" class="hide_summary" data-attr="<%= history.id %>">Hide Summary</button>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+</div>
+
+
+

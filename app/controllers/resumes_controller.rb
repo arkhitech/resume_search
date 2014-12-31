@@ -1,9 +1,9 @@
 class ResumesController < ApplicationController
   def index
-     @resumes = Resume.all
-     names=@resumes.map(&:name).join(",")
-     result=Resume.search(query: names)
-     @facets=result.facets
+#     @resumes = Resume.all
+#     names=@resumes.map(&:name).join(",")
+     @resumes=Resume.search(params)
+     @facets= @resumes.facets
   end
   def create
     
@@ -11,12 +11,12 @@ class ResumesController < ApplicationController
   def show
   end
   
-  def search
-    @resumes = Resume.tire.search params[:q]
-    
-    result=Resume.search(query: params[:q])
-   @facets=result.facets
-    
-    render :action => "index"
-  end
+#  def search
+#    @resumes = Resume.tire.search params[:q]
+#    
+#    result=Resume.search(query: params[:q])
+#   @facets=result.facets
+#    
+#    render :action => "index"
+#  end
 end

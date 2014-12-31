@@ -12,6 +12,9 @@
         <th>Name</th>
         <th>Telephone Number</th>
         <th>Email</th>
+        <th>Country</th>
+        <th>Executive Summary</th>
+        <th>Employer History</th>
       </tr>
     </thead>
 
@@ -21,12 +24,33 @@
           <td><%= resume.name %></td>
           <td><%= resume.telephone %></td>
           <td><%= resume.email %></td>
+          <td><%= resume.country %></td>
+          <td>
+            <div class="div_show_link_<%= resume.id %>">
+              <button href="#" class="show_summary" data-attr="<%= resume.id %>">Show Summary</button>
+            </div>
+            <div class="div_summary_<%= resume.id %>" style="display: none;">
+              <% unless resume.note.nil? %>
+                <% unless resume.note.summary.nil?  %>
+                  <p><%= resume.note.summary.gsub(/;/, "<br>").html_safe %></p>
+                <% else %>
+                  N/A
+                <% end %>
+              <% else %>
+                  N/A
+              <% end %>
+                <button href="#" class="hide_summary" data-attr="<%= resume.id %>">Hide Summary</button>
+            </div>
+          </td>
+          <td><%= link_to 'Show', resume_employer_histories_path(resume.id) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
   <br>
+  
+  <%= will_paginate @resumes %>
 </div>
 
 

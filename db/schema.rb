@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219100700) do
+ActiveRecord::Schema.define(version: 20141223062812) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -21,10 +21,38 @@ ActiveRecord::Schema.define(version: 20141219100700) do
     t.datetime "updated_at"
   end
 
+  create_table "employer_histories", force: true do |t|
+    t.string   "organization_name"
+    t.integer  "resume_id"
+    t.integer  "description_id"
+    t.string   "description_type"
+    t.string   "title"
+    t.string   "country_code"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.string   "months_of_work"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "employer_histories", ["description_id", "description_type"], name: "index_employer_histories_on_description_id_and_description_type", using: :btree
+  add_index "employer_histories", ["resume_id"], name: "index_employer_histories_on_resume_id", using: :btree
+
+  create_table "notes", force: true do |t|
+    t.text     "summary"
+    t.integer  "description_id"
+    t.string   "description_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["description_id", "description_type"], name: "index_notes_on_description_id_and_description_type", using: :btree
+
   create_table "resumes", force: true do |t|
     t.string   "name"
     t.string   "telephone"
     t.string   "email"
+    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,142 @@
+[2014-12-22 11:51:02,613][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: initializing ...
+[2014-12-22 11:51:02,619][INFO ][plugins                  ] [Witchfire] loaded [], sites []
+[2014-12-22 11:51:05,093][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: initialized
+[2014-12-22 11:51:05,093][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: starting ...
+[2014-12-22 11:51:05,207][INFO ][transport                ] [Witchfire] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.1.7:9300]}
+[2014-12-22 11:51:08,303][INFO ][cluster.service          ] [Witchfire] new_master [Witchfire][l030P3ssRQG5ZQCxbyZHWQ][inet[/192.168.1.7:9300]], reason: zen-disco-join (elected_as_master)
+[2014-12-22 11:51:08,335][INFO ][discovery                ] [Witchfire] elasticsearch/l030P3ssRQG5ZQCxbyZHWQ
+[2014-12-22 11:51:08,350][INFO ][http                     ] [Witchfire] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.1.7:9200]}
+[2014-12-22 11:51:08,351][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: started
+[2014-12-22 11:51:08,455][INFO ][gateway                  ] [Witchfire] recovered [0] indices into cluster_state
+[2014-12-22 11:56:24,363][INFO ][cluster.metadata         ] [Witchfire] [resumes] creating index, cause [api], shards [5]/[1], mappings [resume]
+[2014-12-22 11:57:32,619][INFO ][cluster.metadata         ] [Witchfire] [articles] creating index, cause [auto(index api)], shards [5]/[1], mappings []
+[2014-12-22 11:57:33,342][INFO ][cluster.metadata         ] [Witchfire] [articles] update_mapping [article] (dynamic)
+[2014-12-22 11:58:41,095][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: stopping ...
+[2014-12-22 11:58:41,178][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: stopped
+[2014-12-22 11:58:41,178][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: closing ...
+[2014-12-22 11:58:41,196][INFO ][node                     ] [Witchfire] {0.20.6}[19776]: closed
+[2014-12-22 12:00:19,180][INFO ][node                     ] [Crimson] {0.20.6}[20062]: initializing ...
+[2014-12-22 12:00:19,187][INFO ][plugins                  ] [Crimson] loaded [], sites []
+[2014-12-22 12:00:21,785][INFO ][node                     ] [Crimson] {0.20.6}[20062]: initialized
+[2014-12-22 12:00:21,786][INFO ][node                     ] [Crimson] {0.20.6}[20062]: starting ...
+[2014-12-22 12:00:21,865][INFO ][transport                ] [Crimson] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.1.7:9300]}
+[2014-12-22 12:00:24,886][INFO ][cluster.service          ] [Crimson] new_master [Crimson][7fqFJwc0Qm25x5lGS_IoBg][inet[/192.168.1.7:9300]], reason: zen-disco-join (elected_as_master)
+[2014-12-22 12:00:24,921][INFO ][discovery                ] [Crimson] elasticsearch/7fqFJwc0Qm25x5lGS_IoBg
+[2014-12-22 12:00:24,936][INFO ][http                     ] [Crimson] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.1.7:9200]}
+[2014-12-22 12:00:24,937][INFO ][node                     ] [Crimson] {0.20.6}[20062]: started
+[2014-12-22 12:00:25,642][INFO ][gateway                  ] [Crimson] recovered [2] indices into cluster_state
+[2014-12-22 15:32:52,527][DEBUG][action.search.type       ] [Crimson] [resumes][3], node[7fqFJwc0Qm25x5lGS_IoBg], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@21ded493]
+org.elasticsearch.search.SearchParseException: [resumes][3]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"query":{"query_string":{"query":{"action":"index","controller":"resumes"}}},"facets":{"name":{"terms":{"field":"name","size":10,"all_terms":false}}},"size":10}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:566)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:481)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:466)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:236)
+	at org.elasticsearch.search.action.SearchServiceTransportAction.sendExecuteQuery(SearchServiceTransportAction.java:141)
+	at org.elasticsearch.action.search.type.TransportSearchQueryThenFetchAction$AsyncAction.sendExecuteFirstPhase(TransportSearchQueryThenFetchAction.java:80)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:205)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:192)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction$2.run(TransportSearchTypeAction.java:178)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.elasticsearch.index.query.QueryParsingException: [resumes] [query_string] query does not support [action]
+	at org.elasticsearch.index.query.QueryStringQueryParser.parse(QueryStringQueryParser.java:188)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:188)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:268)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:246)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:554)
+	... 11 more
+[2014-12-22 15:32:52,528][DEBUG][action.search.type       ] [Crimson] [resumes][2], node[7fqFJwc0Qm25x5lGS_IoBg], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@21ded493]
+org.elasticsearch.search.SearchParseException: [resumes][2]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"query":{"query_string":{"query":{"action":"index","controller":"resumes"}}},"facets":{"name":{"terms":{"field":"name","size":10,"all_terms":false}}},"size":10}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:566)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:481)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:466)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:236)
+	at org.elasticsearch.search.action.SearchServiceTransportAction.sendExecuteQuery(SearchServiceTransportAction.java:141)
+	at org.elasticsearch.action.search.type.TransportSearchQueryThenFetchAction$AsyncAction.sendExecuteFirstPhase(TransportSearchQueryThenFetchAction.java:80)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:205)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:192)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction$2.run(TransportSearchTypeAction.java:178)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.elasticsearch.index.query.QueryParsingException: [resumes] [query_string] query does not support [action]
+	at org.elasticsearch.index.query.QueryStringQueryParser.parse(QueryStringQueryParser.java:188)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:188)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:268)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:246)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:554)
+	... 11 more
+[2014-12-22 15:32:52,528][DEBUG][action.search.type       ] [Crimson] [resumes][4], node[7fqFJwc0Qm25x5lGS_IoBg], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@21ded493]
+org.elasticsearch.search.SearchParseException: [resumes][4]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"query":{"query_string":{"query":{"action":"index","controller":"resumes"}}},"facets":{"name":{"terms":{"field":"name","size":10,"all_terms":false}}},"size":10}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:566)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:481)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:466)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:236)
+	at org.elasticsearch.search.action.SearchServiceTransportAction.sendExecuteQuery(SearchServiceTransportAction.java:141)
+	at org.elasticsearch.action.search.type.TransportSearchQueryThenFetchAction$AsyncAction.sendExecuteFirstPhase(TransportSearchQueryThenFetchAction.java:80)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:205)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:192)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction$2.run(TransportSearchTypeAction.java:178)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.elasticsearch.index.query.QueryParsingException: [resumes] [query_string] query does not support [action]
+	at org.elasticsearch.index.query.QueryStringQueryParser.parse(QueryStringQueryParser.java:188)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:188)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:268)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:246)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:554)
+	... 11 more
+[2014-12-22 15:32:52,528][DEBUG][action.search.type       ] [Crimson] [resumes][1], node[7fqFJwc0Qm25x5lGS_IoBg], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@21ded493]
+org.elasticsearch.search.SearchParseException: [resumes][1]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"query":{"query_string":{"query":{"action":"index","controller":"resumes"}}},"facets":{"name":{"terms":{"field":"name","size":10,"all_terms":false}}},"size":10}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:566)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:481)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:466)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:236)
+	at org.elasticsearch.search.action.SearchServiceTransportAction.sendExecuteQuery(SearchServiceTransportAction.java:141)
+	at org.elasticsearch.action.search.type.TransportSearchQueryThenFetchAction$AsyncAction.sendExecuteFirstPhase(TransportSearchQueryThenFetchAction.java:80)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:205)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:192)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction$2.run(TransportSearchTypeAction.java:178)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.elasticsearch.index.query.QueryParsingException: [resumes] [query_string] query does not support [action]
+	at org.elasticsearch.index.query.QueryStringQueryParser.parse(QueryStringQueryParser.java:188)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:188)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:268)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:246)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:554)
+	... 11 more
+[2014-12-22 15:32:52,528][DEBUG][action.search.type       ] [Crimson] [resumes][0], node[7fqFJwc0Qm25x5lGS_IoBg], [P], s[STARTED]: Failed to execute [org.elasticsearch.action.search.SearchRequest@21ded493]
+org.elasticsearch.search.SearchParseException: [resumes][0]: from[-1],size[-1]: Parse Failure [Failed to parse source [{"query":{"query_string":{"query":{"action":"index","controller":"resumes"}}},"facets":{"name":{"terms":{"field":"name","size":10,"all_terms":false}}},"size":10}]]
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:566)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:481)
+	at org.elasticsearch.search.SearchService.createContext(SearchService.java:466)
+	at org.elasticsearch.search.SearchService.executeQueryPhase(SearchService.java:236)
+	at org.elasticsearch.search.action.SearchServiceTransportAction.sendExecuteQuery(SearchServiceTransportAction.java:141)
+	at org.elasticsearch.action.search.type.TransportSearchQueryThenFetchAction$AsyncAction.sendExecuteFirstPhase(TransportSearchQueryThenFetchAction.java:80)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:205)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.performFirstPhase(TransportSearchTypeAction.java:192)
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction$2.run(TransportSearchTypeAction.java:178)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.elasticsearch.index.query.QueryParsingException: [resumes] [query_string] query does not support [action]
+	at org.elasticsearch.index.query.QueryStringQueryParser.parse(QueryStringQueryParser.java:188)
+	at org.elasticsearch.index.query.QueryParseContext.parseInnerQuery(QueryParseContext.java:188)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:268)
+	at org.elasticsearch.index.query.IndexQueryParserService.parse(IndexQueryParserService.java:246)
+	at org.elasticsearch.search.query.QueryParseElement.parse(QueryParseElement.java:33)
+	at org.elasticsearch.search.SearchService.parseSource(SearchService.java:554)
+	... 11 more
+[2014-12-22 17:52:17,981][INFO ][cluster.metadata         ] [Crimson] [resumes] update_mapping [resume] (dynamic)
+[2014-12-22 19:22:51,205][INFO ][node                     ] [Crimson] {0.20.6}[20062]: stopping ...
+[2014-12-22 19:22:51,404][INFO ][node                     ] [Crimson] {0.20.6}[20062]: stopped
+[2014-12-22 19:22:51,404][INFO ][node                     ] [Crimson] {0.20.6}[20062]: closing ...
+[2014-12-22 19:22:51,413][INFO ][node                     ] [Crimson] {0.20.6}[20062]: closed

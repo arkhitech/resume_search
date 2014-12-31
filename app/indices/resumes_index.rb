@@ -4,4 +4,4 @@ Tire.index 'resumes' do
 
 
       refresh
-    end
+end

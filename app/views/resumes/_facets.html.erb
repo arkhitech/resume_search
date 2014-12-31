@@ -3,12 +3,22 @@
   <h2>Facet Counts</h2>
   
       <div>
-        <b>Total Number: </b><%=@facets['name']["total"]%>
+        <b>Names: </b><%=@facets['name']["total"]%>
         <ul>
           <%terms=@facets['name']["terms"]%>
           <% terms.each do |term| %>
             <li><%="#{term['term']}   (#{term['count']})"%></li>
           <%end%>
+        </ul>
+
+      </div>
+      <div>
+        <b>Countries: </b><%= @facets['country']["total"] %>
+        <ul>
+          <% terms=@facets['country']["terms"] %>
+          <% terms.each do |term| %>
+            <li><%="#{term['term']} (#{term['count']})" %></li>
+          <% end %>
         </ul>
 
       </div>
