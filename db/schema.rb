@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20141223062812) do
     t.datetime "updated_at"
   end
 
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resumes", force: true do |t|
+    t.string   "name"
+    t.string   "telephone"
+    t.string   "email"
+    t.string   "country"
   add_index "employer_histories", ["description_id", "description_type"], name: "index_employer_histories_on_description_id_and_description_type", using: :btree
   add_index "employer_histories", ["resume_id"], name: "index_employer_histories_on_resume_id", using: :btree
 
@@ -42,17 +51,6 @@ ActiveRecord::Schema.define(version: 20141223062812) do
     t.text     "summary"
     t.integer  "description_id"
     t.string   "description_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "notes", ["description_id", "description_type"], name: "index_notes_on_description_id_and_description_type", using: :btree
-
-  create_table "resumes", force: true do |t|
-    t.string   "name"
-    t.string   "telephone"
-    t.string   "email"
-    t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

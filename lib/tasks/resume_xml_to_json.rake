@@ -1,7 +1,9 @@
 namespace :elasticsearch do  
   task :resume_xml_to_json  => :environment do
     file_names=Dir.glob("xml_files/*")
+    count=0
     file_names.each do |file_name|
+      count+=1
       puts "file name: #{file_name}"
       f = File.open(file_name)
     
@@ -26,7 +28,7 @@ namespace :elasticsearch do
         end
         
       else
-        telephone="No number"
+        telephone="No Number"
       end
       puts "telephone: #{telephone}"
       
@@ -99,7 +101,8 @@ namespace :elasticsearch do
       end
       
     end
-    
+    Resume.__elasticsearch__.create_index! force: true
+    Resume.import
 
   end
 
@@ -109,7 +112,7 @@ end
 
 
 
-
+#Resume.__elasticsearch__.create_index! force: true
 #bundle exec rake  elasticsearch:resume_xml_to_json
 
   
